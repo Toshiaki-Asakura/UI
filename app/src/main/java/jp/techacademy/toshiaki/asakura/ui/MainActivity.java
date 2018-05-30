@@ -17,7 +17,7 @@ import android.widget.TimePicker;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView mTextView;
-    EditText mEditText1, mEditText2;
+    EditText mEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,18 +34,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button3.setOnClickListener(this);
 
         Button button4 = (Button) findViewById(R.id.button4);
-        button3.setOnClickListener(this);
+        button4.setOnClickListener(this);
 
         mTextView = (TextView) findViewById(R.id.textView);
-        mEditText1 = (EditText) findViewById(R.id.editText1);
-        mEditText2 = (EditText) findViewById(R.id.editText2);
-
+        mEditText = (EditText) findViewById(R.id.editText);
     }
 
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.button1) {
-            mTextView.setText(mEditText1.getText().toString()+" "+mEditText2.getText().toString());
+            mTextView.setText(mEditText.getText().toString());
         } else if (v.getId() == R.id.button2) {
             showAlertDialog();
         } else if (v.getId() == R.id.button3) {
@@ -67,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Log.d("UI_PARTS", "肯定ボタン");
-                      }
+                    }
                 });
 
         // 中立ボタンに表示される文字列、押したときのリスナーを設定する
@@ -92,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
+
     private void showTimePickerDialog() {
         TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                 new TimePickerDialog.OnTimeSetListener() {
@@ -121,4 +120,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 1);
         datePickerDialog.show();
     }
-}
+}}
